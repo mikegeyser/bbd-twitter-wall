@@ -2,17 +2,30 @@ This is a twitter wall that was built on-the-fly for the WE THINK CODE_ students
 that visited BBD. Below are the sequence of steps that was followed, with a
 brief explanation of each step.
 
+# References
+- https://nodejs.org/
+- https://expressjs.com/
+- https://github.com/ttezel/twit
+- http://socket.io/
+- http://sass-lang.com/
+- http://compass-style.org/
+- https://css-tricks.com/glitch-effect-text-images-svg/
+- http://jquery.com/
+- http://masonry.desandro.com/
+
 # Step 0
 Install node.js, check out the code and install all dependendant packages from
 the root directory of the project:
 
 ```
-> git clone git@github.com:mikegeyser/bbd-twitter-wall.git
-> cd bbd-twitter-wall
-> npm install
+>> git clone git@github.com:mikegeyser/bbd-twitter-wall.git
+>> cd bbd-twitter-wall
+>> npm install
 ```
 
 # Step 1
+Start with creating the skeleton of an express.js application, that has a single
+route that accepts a GET request, and listens for requests at port 3000.
 
 app.js
 
@@ -33,7 +46,12 @@ http.listen(3000, function(){
 ```
 >> node index
 ```
+
+Open a browser window and navigate to http://localhost:3000, and you should sendfile
+a blank window with the words "Hello World" on it.
+
 # Step 2
+Update the express app to serve index.html, and allow static file access.
 
 app.js
 
@@ -57,8 +75,13 @@ index.html
   </body>
 </html>
 ```
+Reloading the page, you should now see the updated text.
 
 # Step 3
+Connect to the twitter stream using twit, you will need to sign up for API
+access using your own twitter credentials. Then you specify what users or
+hash tags you want to track, and provide a callback event for the twitter
+stream.
 
 ```
 var Twit = require("twit");
@@ -87,7 +110,12 @@ stream.on("tweet", function(status) {
 });
 ```
 
+If you restart the script, and wait a while, you should see tweets being logged
+in the console window.
+
 # Step 4
+Reference socket.io and inside the twitter stream, emit the data that we will
+use on the front end.
 
 ```
 var io = require('socket.io')(http);
@@ -102,8 +130,11 @@ io.emit("tweet", {
 ```
 
 # Step 5
+Create the basic styling for the project using sass and compass, and start
+automatically compiling the sass into CSS. Then link the output CSS files, as
+well as some scripts that you'll use later on.
 
-Create sass/styles.scss
+sass/styles.scss
 
 ```
 @import "compass/css3";
@@ -146,8 +177,8 @@ index.html
 ```
 
 # Step 6
-
-Copy sass/glitch.scss
+Reference the glitch sass file that we created, and set the welcome text to
+glitch.
 
 sass/styles.scss
 
@@ -163,8 +194,10 @@ sass/styles.scss
 ```
 
 # Step 7
+Add the place holder markup to contain the glitched images, and load up the svg
+image using an AJAX get. (This is a bit of a hack, for brevity, and you could
+also just copy and paste the svg code in directly, but the file becomes a little unwieldy.) Lastly, update the sass file to glitch the image.
 
-Copy ATC.svg
 index.html
 
 ```
@@ -213,6 +246,12 @@ sass/styles.scss
 ```
 
 # Step 8
+Put a div in the html page that will act as a container for all of the tweets
+received. Then initialise the masonry jQuery plugin and the socket.io stream.
+Then provide a callback for when a tweet is received that prepends a div containing
+the tweet onto the beginning of the list of tweets, and call the masonry plugin
+telling it to re-layout the page. Lastly, we add a bit of sass styling to ensure
+that the tweets show up well on the screen, and we're done.
 
 index.html
 
@@ -221,21 +260,21 @@ index.html
 ```
 
 ```
-      var $messages = $('#messages');
+var $messages = $('#messages');
 
-      $messages.masonry({
-        itemSelector: 'div'
-      });
+$messages.masonry({
+  itemSelector: 'div'
+});
 
-      var socket = io();
+var socket = io();
 
-      socket.on('tweet', function(tweet){
-        // Prepend the tweet.
-        $messages.prepend('<div>' + tweet.name + ": <br /> " + tweet.text + '</div>');
-        $messages.masonry( 'reloadItems' );
-        $messages.masonry( 'layout' );
+socket.on('tweet', function(tweet){
+  // Prepend the tweet.
+  $messages.prepend('<div>' + tweet.name + ": <br /> " + tweet.text + '</div>');
+  $messages.masonry( 'reloadItems' );
+  $messages.masonry( 'layout' );
 
-      });
+});
 ```
 
 sass/styles.scss
