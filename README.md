@@ -2,11 +2,15 @@ This is a twitter wall that was built on-the-fly for the WE THINK CODE_ students
 that visited BBD. Below are the sequence of steps that was followed, with a
 brief explanation of each step.
 
-Disclaimer: There may be some idiosyncrasies between different machines, particularly with regards to setting up nodejs and ruby for sass. This guide was written to explain
+*Disclaimer:* There may be some idiosyncrasies between different machines, particularly with regards to setting up nodejs and ruby for sass. This guide was written to explain
 what we did, and relies on you having set up your machine properly. In fact,
 [this entire demo is works-on-my-machine certified](https://blog.codinghorror.com/the-works-on-my-machine-certification-program/).
 
 ![](https://blog.codinghorror.com/content/images/uploads/2007/03/6a0120a85dcdae970b0128776ff992970c-pi.png)
+
+If there are any problems with the code itself, questions about how it works, or
+where you can find out more about a specific technology - we are happy to help.
+Just log an issue on this repository and we'll get to it as soon as we can!
 
 # References
 - https://nodejs.org/
