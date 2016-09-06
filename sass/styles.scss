@@ -1,0 +1,52 @@
+@import "compass/css3";
+@import "glitch.scss";
+
+
+
+$grey: rgba(50,50,55,1.00);
+$lightgrey: rgba(255, 255, 255, 0.15);
+$glitch_1: rgba(200,0,0,1.00);
+$glitch_2: rgba(0,50,55,1.00);
+
+body {
+  background-color: $grey;
+  font-family: Source Code Pro;
+  color: white;
+}
+
+.welcome {
+  left: 400px;
+  top: 15px;
+  font-size: 40px;
+  @include textGlitch("welcome", 15, white, $grey, $glitch_1, $glitch_2, 1000, 115);
+}
+
+.logo {
+  /*
+    1. Namespace
+    2. Intensity
+    3. Fill Color
+    4. Background
+    5. Width (px)
+    6. Height (px)
+    5. Top (px, abs pos)
+    6. Left (px, abs pos)
+  */
+  @include svgGlitch("logo", 12, white, $grey, $glitch_1, $glitch_2, 400, 200, -50, 0);
+}
+
+#messages {
+    margin: 5px;
+    width: 100%;
+}
+
+#messages div {
+    overflow: hidden;
+    cursor: pointer;
+    background: $lightgrey;
+    border: inherit;
+    border-radius: 4px;
+    width: 350px;
+    margin: 10px;
+    padding: 5px;
+}
