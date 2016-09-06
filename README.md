@@ -2,6 +2,12 @@ This is a twitter wall that was built on-the-fly for the WE THINK CODE_ students
 that visited BBD. Below are the sequence of steps that was followed, with a
 brief explanation of each step.
 
+Disclaimer: There may be some idiosyncrasies between different machines, particularly with regards to setting up nodejs and ruby for sass. This guide was written to explain
+what we did, and relies on you having set up your machine properly. In fact,
+[this entire demo is works-on-my-machine certified](https://blog.codinghorror.com/the-works-on-my-machine-certification-program/).
+
+![](https://blog.codinghorror.com/content/images/uploads/2007/03/6a0120a85dcdae970b0128776ff992970c-pi.png)
+
 # References
 - https://nodejs.org/
 - https://expressjs.com/
@@ -14,7 +20,7 @@ brief explanation of each step.
 - http://masonry.desandro.com/
 
 # Step 0
-Install node.js, check out the code and install all dependendant packages from
+Install node.js, check out the code and install all dependent packages from
 the root directory of the project:
 
 ```
