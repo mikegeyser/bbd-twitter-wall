@@ -1,0 +1,37 @@
+<div class="EmbeddedTweet">
+  <div *ngIf="tweet.entities.media && tweet.entities.media.length > 0" class="EmbeddedTweet--mediaForward">
+    <article class="MediaCard MediaCard--mediaForward">
+      <div class="MediaCard-media">
+        <div class="MediaCard-mediaContainer" style="padding-bottom: 50%">
+          <span class="MediaCard-mediaAsset MediaCard-borderOverlay NaturalImage" href="">
+            <img class="NaturalImage-image" alt="" src="{{ tweet.entities.media[0].media_url}}">
+          </span>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="EmbeddedTweet-tweet">
+    <blockquote class="Tweet">
+      <div class="Tweet-header">
+        <div class="TweetAuthor">
+          <span class="TweetAuthor-link Identity" href="">
+            <span class="TweetAuthor-avatar Identity-avatar">
+              <img class="Avatar" alt="" src="{{ tweet.user.profile_image_url }}">
+            </span>
+            <span class="TweetAuthor-name Identity-name">{{ tweet.user.name }}</span>
+            <span class="TweetAuthor-screenName Identity-screenName">@{{tweet.user.screen_name }}</span>
+          </span>
+        </div>
+      </div>
+      <div class="Tweet-body">
+        <p class="Tweet-text">{{ tweet.text }}</p>
+        <div class="Tweet-metadata dateline">
+          <span class="long-permalink" href="">
+            <time>{{ tweet.created_at }}</time>
+          </span>
+        </div>
+      </div>
+    </blockquote>
+  </div>
+</div>

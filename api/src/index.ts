@@ -1,5 +1,3 @@
-console.log("wat?");
-
 let debug = process.argv.filter((arg) => arg === "--debug" || arg === "-d").length > 0;
 if (debug) {
     console.log("DEBUG");
@@ -56,9 +54,9 @@ stream.on("error", console.log);
 
 stream.on("tweet", (status) => {
     try {
-        let socialMediaPosting = Twitter.asSocialMediaPosting(status);
-        socialMediaPosting.articleBody = template(status);
-        io.emit("tweet", socialMediaPosting);
+        // let socialMediaPosting = Twitter.asSocialMediaPosting(status);
+        // socialMediaPosting.articleBody = template(status);
+        io.emit("tweet", status);
     }
     catch (e) {
         console.log(e);

@@ -1,13 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-console.log("wat?");
 var debug = process.argv.filter(function (arg) { return arg === "--debug" || arg === "-d"; }).length > 0;
 if (debug) {
     console.log("DEBUG");
 }
 var config = require("config");
 console.log(JSON.stringify(config, null, 2));
-var twitter_1 = require("./lib/twitter");
 var socketio = require("socket.io");
 var express = require("express");
 var path = require("path");
@@ -32,9 +30,7 @@ var stream = T.stream("statuses/filter", {
 stream.on("error", console.log);
 stream.on("tweet", function (status) {
     try {
-        var socialMediaPosting = twitter_1.Twitter.asSocialMediaPosting(status);
-        socialMediaPosting.articleBody = template(status);
-        io.emit("tweet", socialMediaPosting);
+        io.emit("tweet", status);
     }
     catch (e) {
         console.log(e);
