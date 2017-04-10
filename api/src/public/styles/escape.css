@@ -1,0 +1,57 @@
+body {
+    /*background: no-repeat top url("../images/Twitter-Board-2.jpeg") rgba(20,20,25,1);
+    background-position: 48% 0;
+    background-size: 800px;
+    padding: 20px;
+    padding-top: 150px;*/
+    font-family: 'Roboto', sans-serif;
+}
+
+#messages {
+    width: 1580px;
+    margin:auto;
+}
+#messages .EmbeddedTweet {
+    overflow: hidden;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.05);
+    border: inherit;
+    /*border-radius: 4px;*/
+    margin: 3px;
+}
+
+.presenters{
+    height: 250px;
+    width: 100%;    
+}
+
+.header {
+    background: no-repeat right url("../images/header-bg.jpg");
+    background-size: cover;
+    height: 200px;
+
+}
+
+.header img {
+    height: 200px;
+    display: block;
+    margin: auto;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url("../images/footer-bg.png");
+    height: 100px;
+    background-size: cover;
+    z-index:9999;
+}
+
+.footer img {
+    height: 100px;
+    display: block;
+    margin: auto;
+    margin-top: 5px;
+}

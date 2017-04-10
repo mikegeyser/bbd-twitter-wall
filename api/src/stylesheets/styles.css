@@ -1,0 +1,278 @@
+/* line 11, ../sass/styles.scss */
+body {
+  background-color: #323237;
+  font-family: Source Code Pro;
+  color: white;
+}
+
+/* line 17, ../sass/styles.scss */
+.welcome {
+  left: 400px;
+  top: 15px;
+  font-size: 40px;
+  color: white;
+  position: relative;
+}
+@keyframes welcome-anim-1 {
+  0% {
+    clip: rect(89px, 1000px, 26px, 0);
+  }
+  6.66667% {
+    clip: rect(29px, 1000px, 88px, 0);
+  }
+  13.33333% {
+    clip: rect(53px, 1000px, 48px, 0);
+  }
+  20% {
+    clip: rect(35px, 1000px, 45px, 0);
+  }
+  26.66667% {
+    clip: rect(87px, 1000px, 84px, 0);
+  }
+  33.33333% {
+    clip: rect(85px, 1000px, 80px, 0);
+  }
+  40% {
+    clip: rect(53px, 1000px, 94px, 0);
+  }
+  46.66667% {
+    clip: rect(16px, 1000px, 102px, 0);
+  }
+  53.33333% {
+    clip: rect(67px, 1000px, 100px, 0);
+  }
+  60% {
+    clip: rect(68px, 1000px, 80px, 0);
+  }
+  66.66667% {
+    clip: rect(2px, 1000px, 71px, 0);
+  }
+  73.33333% {
+    clip: rect(92px, 1000px, 66px, 0);
+  }
+  80% {
+    clip: rect(72px, 1000px, 109px, 0);
+  }
+  86.66667% {
+    clip: rect(113px, 1000px, 87px, 0);
+  }
+  93.33333% {
+    clip: rect(76px, 1000px, 13px, 0);
+  }
+  100% {
+    clip: rect(35px, 1000px, 43px, 0);
+  }
+}
+@keyframes welcome-anim-2 {
+  0% {
+    clip: rect(51px, 1000px, 102px, 0);
+  }
+  6.66667% {
+    clip: rect(8px, 1000px, 60px, 0);
+  }
+  13.33333% {
+    clip: rect(54px, 1000px, 70px, 0);
+  }
+  20% {
+    clip: rect(82px, 1000px, 10px, 0);
+  }
+  26.66667% {
+    clip: rect(44px, 1000px, 27px, 0);
+  }
+  33.33333% {
+    clip: rect(5px, 1000px, 13px, 0);
+  }
+  40% {
+    clip: rect(37px, 1000px, 41px, 0);
+  }
+  46.66667% {
+    clip: rect(19px, 1000px, 57px, 0);
+  }
+  53.33333% {
+    clip: rect(110px, 1000px, 55px, 0);
+  }
+  60% {
+    clip: rect(67px, 1000px, 66px, 0);
+  }
+  66.66667% {
+    clip: rect(93px, 1000px, 32px, 0);
+  }
+  73.33333% {
+    clip: rect(73px, 1000px, 3px, 0);
+  }
+  80% {
+    clip: rect(64px, 1000px, 113px, 0);
+  }
+  86.66667% {
+    clip: rect(44px, 1000px, 21px, 0);
+  }
+  93.33333% {
+    clip: rect(85px, 1000px, 38px, 0);
+  }
+  100% {
+    clip: rect(52px, 1000px, 67px, 0);
+  }
+}
+/* line 27, ../sass/glitch.scss */
+.welcome:before, .welcome:after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #323237;
+  clip: rect(0, 0, 0, 0);
+}
+/* line 37, ../sass/glitch.scss */
+.welcome:after {
+  left: 4px;
+  text-shadow: -1px 0 #c80000;
+  animation: welcome-anim-1 2s infinite linear alternate-reverse;
+}
+/* line 42, ../sass/glitch.scss */
+.welcome:before {
+  left: -4px;
+  text-shadow: 2px 0 #003237;
+  animation: welcome-anim-2 3s infinite linear alternate-reverse;
+}
+
+/* line 24, ../sass/styles.scss */
+.logo {
+  /*
+    1. Namespace
+    2. Intensity
+    3. Fill Color
+    4. Background
+    5. Width (px)
+    6. Height (px)
+    5. Top (px, abs pos)
+    6. Left (px, abs pos)
+  */
+}
+@keyframes logo-anim-1 {
+  0% {
+    clip: rect(65px, 400px, 200px, 0);
+  }
+  8.33333% {
+    clip: rect(11px, 400px, 39px, 0);
+  }
+  16.66667% {
+    clip: rect(-3px, 400px, 210px, 0);
+  }
+  25% {
+    clip: rect(-11px, 400px, 116px, 0);
+  }
+  33.33333% {
+    clip: rect(7px, 400px, 159px, 0);
+  }
+  41.66667% {
+    clip: rect(124px, 400px, 139px, 0);
+  }
+  50% {
+    clip: rect(25px, 400px, 87px, 0);
+  }
+  58.33333% {
+    clip: rect(132px, 400px, 112px, 0);
+  }
+  66.66667% {
+    clip: rect(3px, 400px, 218px, 0);
+  }
+  75% {
+    clip: rect(33px, 400px, 141px, 0);
+  }
+  83.33333% {
+    clip: rect(44px, 400px, 218px, 0);
+  }
+  91.66667% {
+    clip: rect(59px, 400px, 94px, 0);
+  }
+  100% {
+    clip: rect(133px, 400px, 70px, 0);
+  }
+}
+@keyframes logo-anim-2 {
+  0% {
+    clip: rect(35px, 400px, 158px, 0);
+  }
+  8.33333% {
+    clip: rect(42px, 400px, 29px, 0);
+  }
+  16.66667% {
+    clip: rect(100px, 400px, 34px, 0);
+  }
+  25% {
+    clip: rect(15px, 400px, 157px, 0);
+  }
+  33.33333% {
+    clip: rect(40px, 400px, 97px, 0);
+  }
+  41.66667% {
+    clip: rect(67px, 400px, 74px, 0);
+  }
+  50% {
+    clip: rect(56px, 400px, 148px, 0);
+  }
+  58.33333% {
+    clip: rect(105px, 400px, 50px, 0);
+  }
+  66.66667% {
+    clip: rect(108px, 400px, 40px, 0);
+  }
+  75% {
+    clip: rect(79px, 400px, 206px, 0);
+  }
+  83.33333% {
+    clip: rect(172px, 400px, 54px, 0);
+  }
+  91.66667% {
+    clip: rect(93px, 400px, 219px, 0);
+  }
+  100% {
+    clip: rect(126px, 400px, 106px, 0);
+  }
+}
+/* line 118, ../sass/glitch.scss */
+.logo svg {
+  position: absolute;
+  top: -50px;
+  left: 0px;
+  fill: white;
+  background: #323237;
+  width: 400px;
+  height: 200px;
+}
+/* line 127, ../sass/glitch.scss */
+.logo svg:nth-child(2),
+.logo svg:nth-child(3) {
+  clip: rect(0, 0, 0, 0);
+}
+/* line 131, ../sass/glitch.scss */
+.logo svg:nth-child(2) {
+  fill: #c80000;
+  left: -2px;
+  animation: logo-anim-1 2s infinite linear alternate-reverse;
+}
+/* line 136, ../sass/glitch.scss */
+.logo svg:nth-child(3) {
+  fill: #003237;
+  left: 2px;
+  animation: logo-anim-2 3s infinite linear alternate-reverse;
+}
+
+/* line 38, ../sass/styles.scss */
+#messages {
+  margin: 5px;
+  width: 100%;
+}
+
+/* line 43, ../sass/styles.scss */
+#messages div {
+  overflow: hidden;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.15);
+  border: inherit;
+  border-radius: 4px;
+  width: 350px;
+  margin: 10px;
+  padding: 5px;
+}

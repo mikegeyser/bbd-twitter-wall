@@ -1,0 +1,40 @@
+<div class="EmbeddedTweet">
+
+    <% if (entities.media && entities.media.length > 0) {%>
+        <div class="EmbeddedTweet--mediaForward">
+            <article class="MediaCard MediaCard--mediaForward">
+                <div class="MediaCard-media">
+                    <div class="MediaCard-mediaContainer" style="padding-bottom: 50%">
+                        <a class="MediaCard-mediaAsset MediaCard-borderOverlay NaturalImage" href="">
+                            <img class="NaturalImage-image" alt="" src="<%=entities.media[0].media_url%>">
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    <%}%>
+
+    <div class="EmbeddedTweet-tweet">
+        <blockquote class="Tweet">
+            <div class="Tweet-header">
+                <div class="TweetAuthor">
+                    <a class="TweetAuthor-link Identity" href="">
+                        <span class="TweetAuthor-avatar Identity-avatar">
+                            <img class="Avatar" alt="" src="<%= user.profile_image_url %>">
+                        </span>
+                        <span class="TweetAuthor-name Identity-name"><%= user.name %></span>
+                        <span class="TweetAuthor-screenName Identity-screenName">@<%= user.screen_name %></span>
+                    </a>
+                </div>
+            </div>
+            <div class="Tweet-body">
+                <p class="Tweet-text"><%= text %></p>
+                <div class="Tweet-metadata dateline">
+                    <a class="long-permalink" href="">
+                        <time data-time="<%= created_at %>"><%= created_at %></time>
+                    </a>
+                </div>                
+            </div>
+        </blockquote>
+    </div>
+</div>

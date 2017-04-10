@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>BBD - DevConf 2017</title>
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="styles/escape.css">
+  <link rel="stylesheet" href="styles/tweet.css">
+</head>
+
+<body>
+  <div class="header">
+    <img src="images/bbd-logo.png" />
+  </div>
+  <div id="messages"></div>
+  <div class="footer">
+    <img src="images/footer.png" />
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script> 
+  <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+  <script src="https://npmcdn.com/masonry-layout@4.1/dist/masonry.pkgd.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.5.3/numeral.min.js"></script>
+
+  <script>
+      $(document).ready(function(){
+        var $messages = $('#messages');
+
+        $messages.masonry({
+          itemSelector: '.EmbeddedTweet'
+        });
+
+        var socket = io();
+      
+        socket.on('tweet', function(tweet){
+          var $tweet = $(tweet.articleBody);
+
+          // Prepend the tweet.
+          $messages.prepend($tweet);
+          $messages.children().slice(30, $messages.children().length).remove();
+
+          $messages.masonry( 'reloadItems' );
+          $messages.masonry( 'layout' );
+
+          // Update all of the relative times.
+          $messages.find('time').each(function(i, instance){
+            var time = moment($(instance).attr('data-time'));
+            $(instance).html(time.fromNow());
+          });
+        });
+
+        // setInterval(function() {
+        //   $.get('api/totals', function(response){
+        //     response.aggregations.forEach(function(aggregation){
+        //       $('span[data-key="' + aggregation.key + '"]').html(aggregation.doc_count);
+        //     });
+        //   });
+        // }, 10 /*seconds*/ * 1000 /*ms*/)
+      });
+
+  </script>
+</body>
+
+</html>
