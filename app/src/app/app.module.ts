@@ -5,10 +5,13 @@ import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { WallComponent } from './wall/wall.component';
+import { TwitterService } from './services/twitter.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WallComponent
   ],
   imports: [
     BrowserModule,
@@ -16,7 +19,7 @@ import { AppComponent } from './app.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [TwitterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

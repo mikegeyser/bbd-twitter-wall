@@ -19,7 +19,7 @@ app.use("/api", require("./lib/api"));
 var template = require("ejs").compile(require("fs").readFileSync(path.resolve(__dirname, "./templates/tweet.ejs"), "utf8"), {});
 var track = [].concat(config.event.organizers).concat(config.event.speakers).map(function (screen_name) { return "@" + screen_name; }).concat(config.event.hashtags.map(function (hashtag) { return "#" + hashtag; })).join(",");
 if (debug) {
-    track += ",#SASSA,#music";
+    track += ",#javascript";
 }
 var Twit = require("twit");
 var T = new Twit(config.twitter);

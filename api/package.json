@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "tsc -p src/ && node src/index.js",
-    "dev": "concurrently \"tsc -w -p src/\"  \"nodemon src/index.js\""
+    "dev": "concurrently \"tsc -w -p src/\"  \"nodemon src/index.js --debug\""
   },
   "author": "",
   "license": "ISC",

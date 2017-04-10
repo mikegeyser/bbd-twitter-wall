@@ -2,23 +2,18 @@
 <html>
 
 <head>
+  <base href="/"></base>
   <title>BBD Twitter Wall</title>
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="styles/escape.css">
-  <link rel="stylesheet" href="styles/tweet.css">
+  <link rel="stylesheet" href="assets/styles/escape.css">
+  <link rel="stylesheet" href="assets/styles/tweet.css">
 </head>
 
-<body>
-  <div class="header">
-    <img src="assets/images/bbd-logo.png" />
-  </div>
-  <div id="messages"></div>
+<body>  
   <app-root></app-root>
-  <div class="footer">
-    <img src="images/footer.png" />
-  </div>
 
-  <script src="/socket.io/socket.io.js"></script>
+
+  <script src="http://localhost:3000/socket.io/socket.io.js"></script>
   <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
   <script src="https://npmcdn.com/masonry-layout@4.1/dist/masonry.pkgd.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
@@ -32,7 +27,7 @@
         itemSelector: '.EmbeddedTweet'
       });
 
-      var socket = io();
+      var socket = io("http://localhost:3000");
 
       socket.on('tweet', function (tweet) {
         var $tweet = $(tweet.articleBody);

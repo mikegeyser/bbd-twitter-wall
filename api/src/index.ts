@@ -36,7 +36,7 @@ const template = require("ejs").compile(require("fs").readFileSync(path.resolve(
 
 let track = [].concat(config.event.organizers).concat(config.event.speakers).map((screen_name) => "@" + screen_name).concat(config.event.hashtags.map((hashtag) => "#" + hashtag)).join(",");
 if (debug) {
-    track += ",#SASSA,#music";
+    track += ",#javascript";
 }
 
 const Twit = require("twit");
