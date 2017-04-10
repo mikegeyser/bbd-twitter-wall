@@ -1,0 +1,40 @@
+.EmbeddedTweet {
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #e1e8ed;
+    border-radius: 4px;
+    max-width: 520px;
+}
+
+    .EmbeddedTweet:hover {
+        border-color: #ccd6dd;
+    }
+
+.EmbeddedTweet-ancestor {
+    padding: 20px 20px 17.6px 20px;
+    background-color: #f5f8fa;
+}
+
+.EmbeddedTweet-tweet {
+    padding: 20px 20px 11.6px 20px;
+}
+
+.EmbeddedTweet--mediaForward {
+    border: 0;
+}
+
+.EmbeddedTweet--mediaForward .EmbeddedTweet-tweet {
+    padding-top: 14.4px;
+    border: 1px solid #e1e8ed;
+    border-width: 0 1px 1px;
+    border-radius: 0 0 4px 4px;
+}
+
+.EmbeddedTweet--mediaForward:hover .EmbeddedTweet-tweet {
+    border-color: #ccd6dd;
+}
+
+.EmbeddedTweet--mediaForward:hover .MediaCard-borderOverlay {
+    border-color: rgba(204,214,221,.75);
+}

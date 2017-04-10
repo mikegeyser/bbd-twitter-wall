@@ -1,4 +1,0 @@
-elasticsearch:
-  host: "storyteller.eastus2.cloudapp.azure.com:9200"
-  log: "error"
-  index: "escape2016"
