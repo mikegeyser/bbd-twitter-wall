@@ -1,5 +1,8 @@
-var router = require("express").Router();
-router.get("/summary", function (req, res) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express = require("express");
+var router = express.Router();
+router.get("/config", function (req, res) {
 });
 router.get("/totals", function (req, res) {
 });

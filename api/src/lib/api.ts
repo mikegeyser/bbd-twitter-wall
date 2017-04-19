@@ -1,7 +1,8 @@
+import * as express from "express";
 
-let router = require("express").Router();
+let router = express.Router();
 
-router.get("/summary", (req, res) => {
+router.get("/config", (req, res) => {
     
 });
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TwitterService } from '../services/twitter.service';
 
-declare let jQuery: any;
+declare let Masonry: any;
 
 @Component({
   selector: 'app-wall',
@@ -14,9 +14,7 @@ export class WallComponent implements OnInit, OnDestroy {
   constructor(public twitterService: TwitterService) { }
 
   ngOnInit() {
-    let $messages = jQuery('#messages');
-
-    $messages.masonry({
+    var masonry = new Masonry( '#messages', {
       itemSelector: '.EmbeddedTweet'
     });
 
@@ -25,8 +23,8 @@ export class WallComponent implements OnInit, OnDestroy {
       this.tweets.unshift(x);
 
       setTimeout(() => {
-        $messages.masonry('reloadItems');
-        $messages.masonry('layout');
+        masonry.reloadItems();
+        masonry.layout();
       });
     });
   }

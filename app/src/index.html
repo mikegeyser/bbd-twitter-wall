@@ -5,49 +5,10 @@
   <base href="/"></base>
   <title>BBD Twitter Wall</title>
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="assets/styles/escape.css">
-  <link rel="stylesheet" href="assets/styles/tweet.css">
 </head>
 
 <body>  
   <app-root></app-root>
-
-
-  <script src="http://localhost:3000/socket.io/socket.io.js"></script>
-  <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-  <script src="https://npmcdn.com/masonry-layout@4.1/dist/masonry.pkgd.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.5.3/numeral.min.js"></script>
-
-  <script>
-    /*$(document).ready(function () {
-      var $messages = $('#messages');
-
-      $messages.masonry({
-        itemSelector: '.EmbeddedTweet'
-      });
-
-      var socket = io("http://localhost:3000");
-
-      socket.on('tweet', function (tweet) {
-        var $tweet = $(tweet.articleBody);
-
-        // Prepend the tweet.
-        $messages.prepend($tweet);
-        $messages.children().slice(30, $messages.children().length).remove();
-
-        $messages.masonry('reloadItems');
-        $messages.masonry('layout');
-
-        // Update all of the relative times.
-        $messages.find('time').each(function (i, instance) {
-          var time = moment($(instance).attr('data-time'));
-          $(instance).html(time.fromNow());
-        });
-      });
-    });
-    */
-  </script>
 </body>
 
 </html>
