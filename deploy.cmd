@@ -50,6 +50,11 @@ IF NOT DEFINED KUDU_SYNC_CMD (
 
 echo Install dependencies - yarn
 call npm install -g yarn
+call npm install -g @angular/cli
+
+call pushd app/
+call ng build
+
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: Deployment
