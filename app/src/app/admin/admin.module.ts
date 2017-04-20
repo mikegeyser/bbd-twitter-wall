@@ -7,6 +7,7 @@ import { AdminComponent } from './admin.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
+import { ConfigService } from './services/config.service';
 
 const routes: Routes = [
   {
@@ -37,7 +38,8 @@ const routes: Routes = [
   ],
   providers: [
     AuthGuard,
-    AuthService
+    AuthService,
+    ConfigService
   ]
 })
 

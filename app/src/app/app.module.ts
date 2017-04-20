@@ -8,14 +8,12 @@ import { AppComponent } from './app.component';
 import { WallComponent } from './wall/wall.component';
 import { TwitterService } from './services/twitter.service';
 import { TweetComponent } from './tweet/tweet.component';
-import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WallComponent,
-    TweetComponent,
-    LoginComponent
+    TweetComponent
   ],
   imports: [
     BrowserModule,
