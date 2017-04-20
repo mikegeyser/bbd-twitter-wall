@@ -54,6 +54,9 @@ call npm install -g yarn
 echo Install dependencies - @angular/cli
 call npm install -g @angular/cli
 
+echo Install dependencies - tsc
+call npm install -g typescript
+
 echo Build - Front end
 call pushd app
 call pwd
@@ -61,7 +64,7 @@ call yarn install
 call ng build
 
 echo Copy front end across into api
-call cp dist/* ../api/public
+call cp dist/* ../api/src/public
 popd
 
 echo Build - Api
@@ -81,6 +84,9 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%/api" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
   IF !ERRORLEVEL! NEQ 0 goto error
 )
+
+call pushd %DEPLOYMENT_TARGET%
+call npm start
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 goto end
