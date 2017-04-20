@@ -53,6 +53,7 @@ call npm install -g yarn
 call npm install -g @angular/cli
 
 call pushd app/
+call pwd
 call ng build
 
 
