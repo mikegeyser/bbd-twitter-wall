@@ -1,7 +1,49 @@
 .admin {
-
+	padding: 24px;
 }
 
 .title {
 	font-size:  24px;
+}
+
+.form {
+	&-field {
+		font-size: 16px;
+		display: flex;
+		margin: 16px;
+
+		&__label {
+			padding-right: 1em;
+			width: 30%;
+		}
+
+		&__input {
+			flex: 1 1 70%;
+			line-height: 1.8;
+			padding: 0 .4em;
+			border: 1px solid #A0A0A0;
+			border-right: 6px solid #A0A0A0;
+
+			&--valid {
+				border-right-color: #016936;
+			}
+
+			&--error {
+				border-right-color: #B03060;
+			}
+
+			&--empty {
+				border-right-color: #A0A0A0;
+			}
+		}
+	}
+}
+
+.fieldset {
+	margin-bottom: 24px;
+
+	&__legend {
+		font-size: 18px;
+		font-weight: 700;
+	}
 }

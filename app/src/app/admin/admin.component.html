@@ -1,37 +1,69 @@
 <div class="admin">
-  <h1 class="title">BBD Twitter Wall - Admin</h1>
-</div>
 
-<!--
-{
-  "twitter":{
-    "consumer_key": "IANgkT1nd56vRlM6Qqu3Oxn2C",
-    "consumer_secret": "VyfZzl9YAAdNqHj12PRk1oX8EZXWnA58RIxjG2E1NOzhrERkPb",
-    "access_token": "29650035-O1mGOswJj3XeEsveSc8QW3Lz6mmYGvWWbZmPeAgXq",
-    "access_token_secret": "k79NwcMe1qzLBOXbyFLwo4373lI0KLKSBzoshhK5V8IOr",
-    "timeout_ms": 60000
-  },
-  "express":{
-  "port": 3000
-  },
-  "event": {
-    "name": "DevConf 2017",
-    "start": 1470261600,
-    "end": 1470348000,
-    "screen_names":[
-      "@bbdsoftware",
-      "@devconfza",
-      "@mikegeyser",
-      "@rorypreddy",
-      "@rmaclean",
-      "@williamBZA"
-      ],
-    "hashtags":[
-      "#bbdsoftware",
-      "#DevConf",
-      "#DevConfZA",
-      "#DevConf2017",
-      "#DevConfZA2017"
-    ]
-  }
-}-->
+  <h1 class="title">BBD Twitter Wall - Admin</h1>
+
+  <form class="form" [formGroup]="configForm" novalidate>
+
+    <fieldset class="fieldset" formGroupName="twitter" >
+      <legend class="fieldset__legend">Twitter:</legend>
+
+      <div class="form-field">
+        <label class="form-field__label" for="consumer_key">Consumer Key</label>
+        <input class="form-field__input" id="consumer_key" type="text" name="consumer_key" autocomplete="off" >
+      </div>
+      <div class="form-field">
+        <label class="form-field__label" for="consumer_secret">Consumer Secret</label>
+        <input class="form-field__input" id="consumer_secret" type="text" name="consumer_secret" autocomplete="off" >
+      </div>
+      <div class="form-field">
+        <label class="form-field__label" for="access_token">Access Token</label>
+        <input class="form-field__input" id="access_token" type="text" name="access_token" autocomplete="off" >
+      </div>
+      <div class="form-field">
+        <label class="form-field__label" for="access_token_secret">Access Token Secret</label>
+        <input class="form-field__input" id="access_token_secret" type="text" name="access_token_secret" autocomplete="off">
+      </div>
+      <div class="form-field">
+        <label class="form-field__label" for="timeout_ms">Timeout (ms)</label>
+        <input class="form-field__input" id="timeout_ms" type="number" min="0" step="500" name="timeout_ms" autocomplete="off">
+      </div>
+    </fieldset>
+
+    <fieldset class="fieldset" formGroupName="express" >
+      <legend class="fieldset__legend">Express:</legend>
+
+      <div class="form-field">
+        <label class="form-field__label" for="express_port">Port</label>
+        <input class="form-field__input" id="express_port" type="number" min="0" step="1" name="port" autocomplete="off">
+      </div>
+
+    </fieldset>
+
+    <fieldset class="fieldset" formGroupName="event" >
+      <legend class="fieldset__legend">Event:</legend>
+
+      <div class="form-field">
+        <label class="form-field__label" for="name">Name</label>
+        <input class="form-field__input" id="name" type="text" name="name">
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="screen_names" >@Screen Names (space delimited) </label>
+        <input class="form-field__input" id="screen_names" type="text" name="screen_names" placeholder="@screen_name_7 @screen_name_3  &#8230;" autocomplete="off">
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label" for="hashtags">#Hashtags (space delimited) </label>
+        <input class="form-field__input" id="hashtags" type="text" name="hashtags" placeholder="#hastag #hashtag &#8230;" autocomplete="off">
+      </div>
+
+    </fieldset>
+
+    <button type="button" >Apply Settings</button>
+
+  </form>
+
+  <p>Form value: {{ configForm.value | json }}</p>
+<p>Form status: {{ configForm.status | json }}</p>
+
+</div>
