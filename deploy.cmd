@@ -60,6 +60,13 @@ call pwd
 call yarn install
 call ng build
 
+echo Copy front end across into api
+call cp dist/* ../api/public
+popd
+
+echo Build - Api
+call pushd api
+call tsc -p src/
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: Deployment
