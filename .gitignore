@@ -39,3 +39,6 @@ obj
 .vs
 .ntvs_analysis.dat
 iisnode.yml
+
+yarn.lock
+**/yarn.lock
