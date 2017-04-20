@@ -1,3 +1,11 @@
-<div id="messages" >
-  <tweet *ngFor="let tweet of tweets" [tweet]="tweet"></tweet>
+<div class="wall">
+  <div class="header">
+    <img class="header-image" src="assets/images/bbd-logo.png" />
+  </div>
+  <div class="messages" id="messages">
+    <tweet *ngFor="let tweet of tweets" [tweet]="tweet"></tweet>
+  </div>
+  <div class="footer">
+    <img class="footer-image" src="assets/images/footer.png" />
+  </div>
 </div>

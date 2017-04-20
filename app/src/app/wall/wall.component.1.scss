@@ -20,11 +20,10 @@ $footer-z-index: 2;
 .header, .footer {
   flex: none;
   background-size: cover;
-  width: 100%;
 }
 
 .header {
-  background-image: no-repeat right url("/assets/images/header-bg.jpg");
+  background: no-repeat right url("/assets/images/header-bg.jpg");
   height: 200px;
   z-index: $header-z-index;
 
@@ -45,7 +44,13 @@ $footer-z-index: 2;
 }
 
 .footer {
-  background-image: url("/assets/images/footer-bg.png");
+  // position: relative;
+  // flex: none;
+  // position: absolute;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
+  background: url("/assets/images/footer-bg.png");
   height: 105px;
   z-index: $footer-z-index;
 

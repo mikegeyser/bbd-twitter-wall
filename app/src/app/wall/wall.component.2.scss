@@ -4,28 +4,17 @@
 	left: 0;
 	height: 100vh;
 	width: 100vw;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
 }
 
 $header-z-index: 3;
 $messages-z-index: 1;
 $footer-z-index: 2;
 
-.header, .messages, .footer {
-  position: relative;
-}
-
-.header, .footer {
-  flex: none;
-  background-size: cover;
-  width: 100%;
-}
-
 .header {
-  background-image: no-repeat right url("/assets/images/header-bg.jpg");
+  background: no-repeat right url("/assets/images/header-bg.jpg");
+  background-size: cover;
   height: 200px;
+  position: relative;
   z-index: $header-z-index;
 
   &-image {
@@ -36,17 +25,29 @@ $footer-z-index: 2;
 }
 
 .messages {
-  flex: 0 1 100%;
-  background-color: blue;
   width: 1530px;
   margin: auto;
-  z-index: $messages-z-index;
   position: relative;
+  z-index: $messages-z-index;
+}
+
+.messages .EmbeddedTweet {
+  overflow: hidden;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.05);
+  border: inherit;
+  /*border-radius: 4px;*/
+  margin: 3px;
 }
 
 .footer {
-  background-image: url("/assets/images/footer-bg.png");
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url("/assets/images/footer-bg.png");
   height: 105px;
+  background-size: cover;
   z-index: $footer-z-index;
 
   &-image {

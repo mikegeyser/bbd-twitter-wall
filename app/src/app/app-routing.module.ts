@@ -1,10 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { WallComponent } from './wall/wall.component';
 
 const routes: Routes = [
   {
     path: '',
-    children: []
+    pathMatch: 'full',
+    component: WallComponent
+  },
+  {
+    path: 'admin',
+    // canActivate: [AuthGuard],
+    pathMatch: 'full',
+    loadChildren: './admin/admin.module#AdminModule'
   }
 ];
 
