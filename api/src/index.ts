@@ -1,9 +1,10 @@
-import * as express from "express";
 import * as path from "path";
 import * as api from "./lib/api";
 import * as config from "config";
-import * as http from "http";
-import * as streaming from "./lib/streaming";
+
+var express = require("express");
+var http = require("http");
+var streaming = require("./lib/streaming");
 
 config.debug = process.argv.filter((arg) => arg === "--debug" || arg === "-d").length > 0;
 
@@ -15,9 +16,8 @@ console.log(JSON.stringify(config, null, 2));
 
 var app = express();
 app.use(express.static(path.join(__dirname, "public")));
-app.use("/api", api);
+app.use('/api', api);
 
-console.log(http);
 var server = http.Server(app);
 streaming(server, config);
 

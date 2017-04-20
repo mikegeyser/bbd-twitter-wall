@@ -1,6 +1,6 @@
 import * as socketio from "socket.io";
 
-module.exports = function (http, config) {
+module.exports = function (http : any, config: any) {
   let io = socketio(http);
 
   let track = []
