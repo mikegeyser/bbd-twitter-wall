@@ -69,6 +69,8 @@ popd
 
 echo Build - Api
 call pushd api
+call pwd
+call yarn install
 call tsc -p src/
 popd
 
