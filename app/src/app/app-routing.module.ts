@@ -5,12 +5,10 @@ import { WallComponent } from './wall/wall.component';
 const routes: Routes = [
   {
     path: 'admin',
-    pathMatch: 'full',
     loadChildren: './admin/admin.module#AdminModule'
   },
   {
     path: '',
-    pathMatch: 'full',
     component: WallComponent
   }
 ];

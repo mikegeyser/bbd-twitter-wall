@@ -12,17 +12,12 @@ import { ConfigService } from './services/config.service';
 const routes: Routes = [
   {
     path: '',
-    children: [
-      {
-        path: '',
-        canActivate: [AuthGuard],
-        component: AdminComponent,
-      },
-      {
-        path: 'login',
-        component: LoginComponent,
-      }
-    ]
+    canActivate: [AuthGuard],
+    component: AdminComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   }
 ];
 
