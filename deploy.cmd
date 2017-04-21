@@ -61,11 +61,11 @@ echo Build - Front end
 call pushd app
 call pwd
 call yarn install
-call ng build
+call ng build --prod
 
 echo Copy front end across into api
-call cp dist/* ../api/src/public
 popd
+call cp app/dist/* api/src/public/
 
 echo Build - Api
 call pushd api
