@@ -14,6 +14,9 @@ import { ConfigService } from './services/config.service';
 
 export class AdminComponent implements OnInit {
 
+  private isBusy: boolean = false;
+  private responseMessage: string = '';
+
   configForm: FormGroup;
   @Input() config: Config;
 
@@ -22,6 +25,21 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadConfig();
+  }
+
+  loadConfig() {
+    this.isBusy = true;
+
+    this.configService.fetchConfig().subscribe(
+      (data) => {
+        this.config = data;
+      },
+      (error) => {
+        this.responseMessage = <any>error;
+      },
+      () => { this.isBusy = false; }
+    );
   }
 
   createForm() {
@@ -46,8 +64,6 @@ export class AdminComponent implements OnInit {
       }),
 
     });
-
-    console.log(this.configForm);
   }
 
   parseInput(): Config {
@@ -66,13 +82,10 @@ export class AdminComponent implements OnInit {
       port: formData.express.port as number
     };
 
-    console.log(formData.event.screen_names);
-    console.log(this.splitIntoArray(formData.event.screen_names, '@'));
-
     const event: Event = {
-      name: formData.event.name,
-      screen_names: this.splitIntoArray(formData.event.screen_names, '@'),
-      hashtags: this.splitIntoArray(formData.event.hashtags, '#')
+      name: formData.event.name as string,
+      screen_names: this.parseIntoArray(formData.event.screen_names, /^@[a-zA-Z0-9_]{1,15}$/) as string[],
+      hashtags: this.parseIntoArray(formData.event.hashtags, /^#[a-zA-Z]{1}[a-zA-Z0-9_]{1,138}$/) as string[]
     };
 
     const config: Config = {
@@ -84,6 +97,22 @@ export class AdminComponent implements OnInit {
     return config;
   }
 
+  parseIntoArray(value: string, pattern: RegExp): Array<string> {
+
+    if (!value) {
+      return [];
+    }
+
+    const arr = value.split(' ').map((val) => {
+      const check = val.trim();
+      if (check && pattern.test(check)) {
+        return check;
+      }
+    });
+
+    return without(arr, undefined);
+  }
+
   splitIntoArray(value: string, token: string): Array<string> {
 
     if (!value) {
@@ -91,7 +120,9 @@ export class AdminComponent implements OnInit {
     }
 
     const arr = value.split(token).map((val) => {
-      return token + val.trim();
+      if (val) {
+        return token + val.trim();
+      }
     });
 
     return without(arr, undefined);
@@ -99,14 +130,40 @@ export class AdminComponent implements OnInit {
 
   onSubmit() {
     this.config = this.parseInput();
-    this.configService.post(this.config).subscribe(/* error handling */);
+
+    this.isBusy = true;
+
+    this.configService.postConfig(this.config).subscribe(
+      (data) => {
+        this.config = data;
+      },
+      (error) => {
+        this.responseMessage = <any>error;
+      },
+      () => { this.isBusy = false; }
+    );
+
     this.ngOnChanges();
   }
 
   ngOnChanges() {
-    // this.configForm.reset({
-    //   name: this.config.twitter.name
-    // });
+    this.configForm.controls.twitter.reset({
+      consumer_key: this.config.twitter.consumer_key,
+      consumer_secret: this.config.twitter.consumer_secret,
+      access_token: this.config.twitter.access_token,
+      access_token_secret: this.config.twitter.access_token_secret,
+      timeout_ms: this.config.twitter.timeout_ms
+    });
+
+    this.configForm.controls.express.reset({
+      port: this.config.express.port
+    });
+
+    this.configForm.controls.event.reset({
+      name: this.config.event.name,
+      screen_names: this.config.event.screen_names.join(' '),
+      hashtags: this.config.event.hashtags.join(' ')
+    });
   }
 
 }

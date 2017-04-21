@@ -1,6 +1,9 @@
 import { Injectable, } from '@angular/core';
+
 import { Observable } from 'rxjs/Observable';
+
 import { Tweet } from '../models/tweet';
+import { SOCKET_TWITTER } from '../config/urls';
 
 declare let io: any;
 
@@ -12,7 +15,7 @@ export class TwitterService {
 
   constructor() {
     this.stream = Observable.create((observer) => {
-      let socket = io("http://localhost:3000");
+      let socket = io(SOCKET_TWITTER);
       socket.on('tweet', (tweet) => observer.next(tweet));
 
       return () => {

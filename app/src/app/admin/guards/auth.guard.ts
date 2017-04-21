@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-import { AuthService } from './auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -13,23 +13,24 @@ export class AuthGuard implements CanActivate {
     console.info('AuthGuard#canActivate');
 
     let url: string = state.url;
-    console.log('AuthGuard#canActivate', url);
-
-
-    return true;
-    // return this.checkLogin(url);
+    
+    // return true;
+    return this.checkLogin(url);
   }
 
   checkLogin(url: string): boolean {
     console.info('AuthGuard#checkLogin');
 
-    if (this.authService.isLoggedIn) { return true; }
+    if (this.authService.isLoggedIn) {
+      return true;
+    }
 
     // Store the attempted URL for redirecting
     this.authService.redirectUrl = url;
 
     // Navigate to the login page with extras
     this.router.navigate(['admin/login']);
+    
     return false;
   }
 }

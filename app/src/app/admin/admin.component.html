@@ -1,69 +1,77 @@
 <div class="admin">
 
   <h1 class="title">BBD Twitter Wall - Admin</h1>
+  <p><a>LOGOUT</a></p>
 
-  <form class="form" [formGroup]="configForm" novalidate>
+  <form class="form" [formGroup]="configForm" (ngSubmit)="onSubmit()" novalidate>
+    
+    <div class="overlay" [class.hidden]="!isBusy" >
+      <div class="spinner" ></div>
+    </div>
 
-    <fieldset class="fieldset" formGroupName="twitter" >
+    <fieldset class="fieldset" formGroupName="twitter">
       <legend class="fieldset__legend">Twitter:</legend>
 
       <div class="form-field">
         <label class="form-field__label" for="consumer_key">Consumer Key</label>
-        <input class="form-field__input" id="consumer_key" type="text" name="consumer_key" autocomplete="off" >
+        <input class="form-field__input" id="consumer_key" type="text" formControlName="consumer_key" autocomplete="off">
       </div>
       <div class="form-field">
         <label class="form-field__label" for="consumer_secret">Consumer Secret</label>
-        <input class="form-field__input" id="consumer_secret" type="text" name="consumer_secret" autocomplete="off" >
+        <input class="form-field__input" id="consumer_secret" type="text" formControlName="consumer_secret" autocomplete="off">
       </div>
       <div class="form-field">
         <label class="form-field__label" for="access_token">Access Token</label>
-        <input class="form-field__input" id="access_token" type="text" name="access_token" autocomplete="off" >
+        <input class="form-field__input" id="access_token" type="text" formControlName="access_token" autocomplete="off">
       </div>
       <div class="form-field">
         <label class="form-field__label" for="access_token_secret">Access Token Secret</label>
-        <input class="form-field__input" id="access_token_secret" type="text" name="access_token_secret" autocomplete="off">
+        <input class="form-field__input" id="access_token_secret" type="text" formControlName="access_token_secret" autocomplete="off">
       </div>
       <div class="form-field">
         <label class="form-field__label" for="timeout_ms">Timeout (ms)</label>
-        <input class="form-field__input" id="timeout_ms" type="number" min="0" step="500" name="timeout_ms" autocomplete="off">
+        <input class="form-field__input" id="timeout_ms" type="number" min="0" step="500" formControlName="timeout_ms" autocomplete="off">
       </div>
     </fieldset>
 
-    <fieldset class="fieldset" formGroupName="express" >
+    <fieldset class="fieldset" formGroupName="express">
       <legend class="fieldset__legend">Express:</legend>
 
       <div class="form-field">
         <label class="form-field__label" for="express_port">Port</label>
-        <input class="form-field__input" id="express_port" type="number" min="0" step="1" name="port" autocomplete="off">
+        <input class="form-field__input" id="express_port" type="number" min="0" step="1" formControlName="port" autocomplete="off">
       </div>
 
     </fieldset>
 
-    <fieldset class="fieldset" formGroupName="event" >
+    <fieldset class="fieldset" formGroupName="event">
       <legend class="fieldset__legend">Event:</legend>
 
       <div class="form-field">
         <label class="form-field__label" for="name">Name</label>
-        <input class="form-field__input" id="name" type="text" name="name">
+        <input class="form-field__input" id="name" type="text" formControlName="name">
       </div>
 
       <div class="form-field">
-        <label class="form-field__label" for="screen_names" >@Screen Names (space delimited) </label>
-        <input class="form-field__input" id="screen_names" type="text" name="screen_names" placeholder="@screen_name_7 @screen_name_3  &#8230;" autocomplete="off">
+        <label class="form-field__label" for="screen_names">@Screen Names (space delimited) </label>
+        <input class="form-field__input" id="screen_names" type="text" formControlName="screen_names" placeholder="@screen_name_7 @screen_name_3  &#8230;"
+          pattern="^(\s)*(@[a-zA-Z0-9_]{1,15}\s+)*(@[a-zA-Z0-9_]{1,15}\s*)+$" autocomplete="off">
       </div>
 
       <div class="form-field">
         <label class="form-field__label" for="hashtags">#Hashtags (space delimited) </label>
-        <input class="form-field__input" id="hashtags" type="text" name="hashtags" placeholder="#hastag #hashtag &#8230;" autocomplete="off">
+        <input class="form-field__input" id="hashtags" type="text" formControlName="hashtags" placeholder="#hastag #hashtag &#8230;" pattern="^(\s)*(#[a-zA-Z][a-zA-Z0-9_]{1,138}\s+)*(#[a-zA-Z]{1}[a-zA-Z0-9_]{1,138}\s*)+$" autocomplete="off">
       </div>
 
     </fieldset>
 
-    <button type="button" >Apply Settings</button>
+    <div>{{ responseMessage }}</div>
+
+    <button type="submit" [disabled]="!configForm.valid" >Apply Settings</button>
 
   </form>
 
-  <p>Form value: {{ configForm.value | json }}</p>
-<p>Form status: {{ configForm.status | json }}</p>
+  <pre>Form value: {{ configForm.value | json }}</pre>
+  <p>Form status: {{ configForm.status | json }}</p>
 
 </div>

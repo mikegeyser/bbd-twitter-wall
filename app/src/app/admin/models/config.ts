@@ -22,40 +22,42 @@ export class Config {
     event: Event;
 }
 
+const twitter: Twitter = {
+    consumer_key: 'IANgkT1nd56vRlM6Qqu3Oxn2C',
+    consumer_secret: 'VyfZzl9YAAdNqHj12PRk1oX8EZXWnA58RIxjG2E1NOzhrERkPb',
+    access_token: '29650035-O1mGOswJj3XeEsveSc8QW3Lz6mmYGvWWbZmPeAgXq',
+    access_token_secret: 'k79NwcMe1qzLBOXbyFLwo4373lI0KLKSBzoshhK5V8IOr',
+    timeout_ms: 60000
+};
 
+const express: Express = {
+    port: 3000
+};
+
+const event: Event = {
+    name: 'DevConf 2017',
+
+    screen_names: [
+        '@bbdsoftware',
+        '@devconfza',
+        '@mikegeyser',
+        '@rorypreddy',
+        '@rmaclean',
+        '@williamBZA'
+    ],
+    hashtags: [
+        '#bbdsoftware',
+        '#DevConf',
+        '#DevConfZA',
+        '#DevConf2017',
+        '#DevConfZA2017'
+    ]
+};
 export const config: Config = {
-    twitter: {
-        consumer_key: "IANgkT1nd56vRlM6Qqu3Oxn2C",
-        consumer_secret: "VyfZzl9YAAdNqHj12PRk1oX8EZXWnA58RIxjG2E1NOzhrERkPb",
-        access_token: "29650035-O1mGOswJj3XeEsveSc8QW3Lz6mmYGvWWbZmPeAgXq",
-        access_token_secret: "k79NwcMe1qzLBOXbyFLwo4373lI0KLKSBzoshhK5V8IOr",
-        timeout_ms: 60000
-    },
-
-    express: {
-        port: 3000
-    },
-
-    event: {
-        name: "DevConf 2017",
-        
-        screen_names: [
-            "@bbdsoftware",
-            "@devconfza",
-            "@mikegeyser",
-            "@rorypreddy",
-            "@rmaclean",
-            "@williamBZA"
-        ],
-        hashtags: [
-            "#bbdsoftware",
-            "#DevConf",
-            "#DevConfZA",
-            "#DevConf2017",
-            "#DevConfZA2017"
-        ]
-    }
-}
+    twitter: twitter,
+    express: express,
+    event: event
+};
 
 
 // {

@@ -1,3 +1,9 @@
-<p>
-  login works!
-</p>
+<div class="login">
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="doLogin($event)">
+    <h1 class="login-form__title">Login Form</h1>
+    <input formControlName="user" class="login-form__input" type="text" placeholder="User" />
+    <input formControlName="password" class="login-form__input" type="password" placeholder="Password" />
+    <button type="submit" [disabled]="!loginForm.valid || isBusy">Login</button>
+    <p class="error" [class.hidden]="!errorMessage || isBusy">{{errorMessage}}</p>
+  </form>
+</div>

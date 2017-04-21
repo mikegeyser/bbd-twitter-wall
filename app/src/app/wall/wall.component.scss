@@ -19,12 +19,14 @@ $footer-z-index: 2;
 
 .header, .footer {
   flex: none;
-  background-size: cover;
   width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .header {
-  background-image: no-repeat right url("/assets/images/header-bg.jpg");
+  background-image: url("/assets/images/header-bg.jpg");
+  background-position-x: right;
   height: 200px;
   z-index: $header-z-index;
 
@@ -37,7 +39,6 @@ $footer-z-index: 2;
 
 .messages {
   flex: 0 1 100%;
-  background-color: blue;
   width: 1530px;
   margin: auto;
   z-index: $messages-z-index;

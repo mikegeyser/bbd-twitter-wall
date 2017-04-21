@@ -1,0 +1,14 @@
+High Priority
+	- Api
+		- Auth PassportJS
+		- Restart twitter stream on config change
+		- Clean up socket connection
+	- 
+
+Medium Priority
+	- Config Persistence
+
+Low Priority
+	- Multi Config
+	- Refactor Tweet Component
+	- create masonry grid using flexbox and angular
