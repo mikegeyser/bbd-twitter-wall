@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  api: "https://bbd-twitter-wall.azurewebsites.net:81"
+  api: "https://wtc-twitter-wall.azurewebsites.net",
+  socket: "https://wtc-twitter-wall.azurewebsites.net"
 };

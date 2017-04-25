@@ -1,0 +1,16 @@
+{
+  "name": "bbd-twitter-wall",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "app": "cd app/ && ng build --prod && cd ..",
+    "api": "cd api/ && npm run build && cd ..",
+    "docker": "docker build . -t mikegeyser/bbd-twitter-wall:latest",
+    "build": "npm run api && npm run app && npm run docker",
+    "start": "npm run build && docker run -p 3000:3000 mikegeyser/bbd-twitter-wall:latest" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikegeyser/bbd-twitter-wall.git"
+  }
+}

@@ -27,6 +27,8 @@ module.exports = function (http : any, config: any) {
   stream.on("error", console.log);
 
   stream.on("tweet", (status) => {
+    console.log(status);
+    
     try {
       io.emit("tweet", status);
     }

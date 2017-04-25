@@ -20,6 +20,7 @@ module.exports = function (http, config) {
     });
     stream.on("error", console.log);
     stream.on("tweet", function (status) {
+        console.log(status);
         try {
             io.emit("tweet", status);
         }

@@ -6,5 +6,6 @@
     "**/node_modules": true,
     "api/src/**/*.js": true,
     "api/src/**/*.js.map": true
-  }
+  },
+  "vsicons.presets.angular": true
 }
