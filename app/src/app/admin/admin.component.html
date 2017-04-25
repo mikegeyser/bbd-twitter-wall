@@ -1,7 +1,6 @@
 <div class="admin">
 
   <h1 class="title">BBD Twitter Wall - Admin</h1>
-  <p><a>LOGOUT</a></p>
 
   <form class="form" [formGroup]="configForm" (ngSubmit)="onSubmit()" novalidate>
     
@@ -65,13 +64,12 @@
 
     </fieldset>
 
-    <div>{{ responseMessage }}</div>
+    <p class="message" [class.hidden]="!responseMessage || isBusy" [class]="messageType">{{responseMessage}}</p>
 
     <button type="submit" [disabled]="!configForm.valid" >Apply Settings</button>
 
   </form>
 
-  <pre>Form value: {{ configForm.value | json }}</pre>
-  <p>Form status: {{ configForm.status | json }}</p>
+  <pre class="config-well" >config: {{ parseInput(configForm.value) | json }}</pre>
 
 </div>

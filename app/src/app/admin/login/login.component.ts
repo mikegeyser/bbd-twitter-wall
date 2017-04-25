@@ -30,6 +30,8 @@ export class LoginComponent implements OnInit {
 
   doLogin(event) {
 
+    console.info('LoginComponent#doLogin');
+
     this.isBusy = true;
     this.errorMessage = null;
 
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(credentails).subscribe(
       (data) => {
+        console.info('LoginComponent#doLogin: data', data);
 
         if (this.authService.isLoggedIn) {
           // Get the redirect URL from our auth service
@@ -48,9 +51,14 @@ export class LoginComponent implements OnInit {
         }
       },
       (error) => {
+        console.info('LoginComponent#doLogin: error', error);
         this.errorMessage = error;
+        this.isBusy = false;
       },
-      () => { this.isBusy = false; }
+      // () => { 
+      //   console.info('LoginComponent#final');
+      //   this.isBusy = false;
+      //  }
     );
   }
 

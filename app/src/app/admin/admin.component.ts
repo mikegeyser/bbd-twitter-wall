@@ -16,6 +16,7 @@ export class AdminComponent implements OnInit {
 
   private isBusy: boolean = false;
   private responseMessage: string = '';
+  private messageType: string = '';
 
   configForm: FormGroup;
   @Input() config: Config;
@@ -34,9 +35,14 @@ export class AdminComponent implements OnInit {
     this.configService.fetchConfig().subscribe(
       (data) => {
         this.config = data;
+        this.responseMessage = 'LOAD CONFIG: Success!';
+        this.messageType = 'success';
+        this.isBusy = false;
       },
       (error) => {
-        this.responseMessage = <any>error;
+        this.responseMessage = 'LOAD CONFIG: ' + <any>error;
+        this.messageType = 'error';
+        this.isBusy = false;
       },
       () => { this.isBusy = false; }
     );
@@ -66,9 +72,7 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  parseInput(): Config {
-
-    const formData = this.configForm.value;
+  parseInput(formData): Config {
 
     const twitter: Twitter = {
       consumer_key: formData.twitter.consumer_key as string,
@@ -129,24 +133,29 @@ export class AdminComponent implements OnInit {
   }
 
   onSubmit() {
-    this.config = this.parseInput();
+    this.config = this.parseInput(this.configForm.value);
 
     this.isBusy = true;
 
     this.configService.postConfig(this.config).subscribe(
       (data) => {
         this.config = data;
+        this.responseMessage = 'SAVE CONFIG: Saved successfully!';
+        this.messageType = 'success';
       },
       (error) => {
-        this.responseMessage = <any>error;
+        this.isBusy = false;
+        this.responseMessage = 'SAVE CONFIG: ' + <any>error;
+        this.messageType = 'error';
       },
-      () => { this.isBusy = false; }
+      () => { }
     );
 
     this.ngOnChanges();
   }
 
   ngOnChanges() {
+    console.log('ngOnChanges')
     this.configForm.controls.twitter.reset({
       consumer_key: this.config.twitter.consumer_key,
       consumer_secret: this.config.twitter.consumer_secret,
