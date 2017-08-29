@@ -9,8 +9,6 @@ declare let Masonry: any;
   styleUrls: ['./wall.component.scss']
 })
 export class WallComponent implements OnInit, OnDestroy {
-  public tweets = [];
-
   constructor(public twitterService: TwitterService) { }
 
   ngOnInit() {
@@ -20,7 +18,6 @@ export class WallComponent implements OnInit, OnDestroy {
 
     this.twitterService.stream.subscribe(x => {
       console.log(x);
-      this.tweets.unshift(x);
 
       setTimeout(() => {
         masonry.reloadItems();

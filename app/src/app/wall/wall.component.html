@@ -1,3 +1,3 @@
 <div id="messages" >
-  <tweet *ngFor="let tweet of tweets" [tweet]="tweet"></tweet>
+  <tweet *ngFor="let tweet of twitterService.stream | async" [tweet]="tweet"></tweet>
 </div>

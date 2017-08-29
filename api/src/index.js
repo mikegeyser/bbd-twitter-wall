@@ -1,5 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 var path = require("path");
 var api = require("./lib/api");
 var config = require("config");
