@@ -9,12 +9,12 @@ export class Media {
 }
 
 export class Entity {
-  media: Media[];
+  media: Media;
 }
 
 export class Tweet {
   user: User;
-  entities: Entity[];
+  entities: Entity;
   text: string;
   created_at: Date;
 }

@@ -9,19 +9,15 @@ declare let Masonry: any;
   styleUrls: ['./wall.component.scss']
 })
 export class WallComponent implements OnInit, OnDestroy {
-  public tweets = [];
 
   constructor(public twitterService: TwitterService) { }
 
   ngOnInit() {
-    var masonry = new Masonry( '#messages', {
+    const masonry = new Masonry( '#messages', {
       itemSelector: '.EmbeddedTweet'
     });
 
     this.twitterService.stream.subscribe(x => {
-      console.log(x);
-      this.tweets.unshift(x);
-
       setTimeout(() => {
         masonry.reloadItems();
         masonry.layout();

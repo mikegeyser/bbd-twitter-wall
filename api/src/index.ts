@@ -1,25 +1,67 @@
 import * as path from "path";
-import * as api from "./lib/api";
 import * as config from "config";
+import * as socketio from "socket.io";
 
-var express = require("express");
-var http = require("http");
-var streaming = require("./lib/streaming");
+const express = require("express");
+const http = require("http");
+const app = express();
+const server = http.Server(app);
+const io = socketio(server);
+const Twit = require("twit");
 
-config.debug = process.argv.filter((arg) => arg === "--debug" || arg === "-d").length > 0;
+config.debug =
+  process.argv.filter(arg => arg === "--debug" || arg === "-d").length > 0;
 
 if (config.debug) {
-    console.log("DEBUG");
+  console.log("DEBUG");
 }
 
 console.log(JSON.stringify(config, null, 2));
 
-var app = express();
 app.use(express.static(path.join(__dirname, "public")));
-app.use('/api', api);
 
-var server = http.Server(app);
-streaming(server, config);
+let track = []
+  .concat(config.event.screen_names)
+  .concat(config.event.hashtags)
+  .join(",");
 
+if (config.debug) {
+  track += ",#javascript";
+}
+
+let T = new Twit(config.twitter);
+let follow = "";
+console.log("track", track);
+
+let stream = T.stream("statuses/filter", {
+  // follow: follow,
+  track: track,
+  language: "en"
+  // filter_level: "low"
+});
+
+stream.on("error", console.log);
+
+let tweets = [];
+
+stream.on("tweet", status => {
+  console.log(status);
+
+  try {
+    tweets.unshift(status);
+
+    if (tweets.length > 100) {
+      tweets.splice(100);
+    }
+
+    io.emit("tweet", status);
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+var cors = require('cors');
+app.use(cors())
+app.get('/tweets', (request, response) => response.send(tweets));
 
 server.listen(config.express.port);

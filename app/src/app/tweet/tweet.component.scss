@@ -814,7 +814,7 @@ a {
 
 .NaturalImage-image {
     max-width: 100%;
-    max-height: 100%;
+    // max-height: 100%;
     border: 0;
     line-height: 0;
     height: auto;
@@ -993,6 +993,7 @@ a {
     border: 1px solid #e1e8ed;
     border-radius: 4px;
     max-width: $tweet_width;
+    min-width: $tweet_width;
 }
 
     .EmbeddedTweet:hover {

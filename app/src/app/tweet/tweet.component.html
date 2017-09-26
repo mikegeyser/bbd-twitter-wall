@@ -1,10 +1,10 @@
 <div class="EmbeddedTweet">
-  <div *ngIf="tweet.entities && tweet.entities[0] && tweet.entities[0].media" class="EmbeddedTweet--mediaForward">
+  <div *ngIf="tweet.entities && tweet.entities.media" class="EmbeddedTweet--mediaForward">
     <article class="MediaCard MediaCard--mediaForward">
       <div class="MediaCard-media">
         <div class="MediaCard-mediaContainer" style="padding-bottom: 50%">
           <span class="MediaCard-mediaAsset MediaCard-borderOverlay NaturalImage" href="">
-            <img class="NaturalImage-image" alt="" src="{{ tweet.entities[0].media[0].media_url}}">
+            <img class="NaturalImage-image" alt="" src="{{ tweet.entities.media[0].media_url}}">
           </span>
         </div>
       </div>
