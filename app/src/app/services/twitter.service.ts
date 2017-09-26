@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/share';
 
 declare const io: any;
 
@@ -16,8 +17,9 @@ export class TwitterService {
     const socket = io(environment.socket);
 
     const get = http
-      .get('http://localhost:3000/tweets')
-      .map(response => response.json());
+      .get(`${environment.socket}/tweets`)
+      .map(response => response.json())
+      .share();
 
     const emit = tweets =>
       Observable.create(observer => {
@@ -32,7 +34,7 @@ export class TwitterService {
 
           observer.next(tweets);
         });
-      });
+      }).share();
 
     this.stream = get.mergeMap(x => emit(x));
   }
