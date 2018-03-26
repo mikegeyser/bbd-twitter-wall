@@ -34,6 +34,9 @@ stream.on("error", console.log);
 var tweets = [];
 stream.on("tweet", function (status) {
     console.log(status);
+    var exists = tweets.filter(function (t) { return t.id == status.id; }).length;
+    if (exists)
+        return;
     try {
         tweets.unshift(status);
         if (tweets.length > 100) {

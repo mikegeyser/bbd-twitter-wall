@@ -47,6 +47,10 @@ let tweets = [];
 stream.on("tweet", status => {
   console.log(status);
 
+  let exists = tweets.filter(t => t.id == status.id).length;
+
+  if (exists) return;
+
   try {
     tweets.unshift(status);
 
