@@ -28,7 +28,7 @@
         <p class="Tweet-text">{{ tweet.text }}</p>
         <div class="Tweet-metadata dateline">
           <span class="long-permalink" href="">
-            <time>{{ tweet.created_at }}</time>
+            <time>{{ tweet.created_at | relativeTime}}</time>
           </span>
         </div>
       </div>

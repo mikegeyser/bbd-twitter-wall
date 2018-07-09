@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { WallComponent } from './wall/wall.component';
 import { TwitterService } from './services/twitter.service';
 import { TweetComponent } from './tweet/tweet.component';
+import { RelativeTimePipe } from './pipe/relative-time.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     WallComponent,
-    TweetComponent
+    TweetComponent,
+    RelativeTimePipe
   ],
   imports: [
     BrowserModule,
