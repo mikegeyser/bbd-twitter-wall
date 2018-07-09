@@ -9,8 +9,7 @@ var app = express();
 var server = http.Server(app);
 var io = socketio(server);
 var Twit = require("twit");
-config.debug =
-    process.argv.filter(function (arg) { return arg === "--debug" || arg === "-d"; }).length > 0;
+config.debug = process.argv.filter(function (arg) { return arg === "--debug" || arg === "-d"; }).length > 0;
 if (config.debug) {
     console.log("DEBUG");
 }
@@ -33,8 +32,13 @@ var stream = T.stream("statuses/filter", {
 stream.on("error", console.log);
 var tweets = [];
 stream.on("tweet", function (status) {
-    console.log(status);
-    var exists = tweets.filter(function (t) { return t.id == status.id; }).length;
+    console.log("ID: " + status.id + "; User: " + status.user.id + "; Text: " + status.text);
+    var exists = tweets.filter(function (t) {
+        var idMatch = t.id == status.id;
+        var textMatch = t.text == status.text;
+        var userMatch = t.user && status.user && (t.user.id == status.user.id);
+        return idMatch || (textMatch && userMatch);
+    }).length;
     if (exists)
         return;
     try {

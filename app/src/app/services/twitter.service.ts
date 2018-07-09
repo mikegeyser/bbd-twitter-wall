@@ -36,6 +36,6 @@ export class TwitterService {
         });
       });
 
-    this.stream = get.mergeMap(x => emit(x));
+    this.stream = get.mergeMap(x => emit(x)).share();
   }
 }
